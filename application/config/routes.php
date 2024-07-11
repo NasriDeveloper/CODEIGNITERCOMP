@@ -53,5 +53,19 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['demo'] = 'welcome/demo_page';
-$route['demoh'] = 'welcome/form_page';
 $route['dem'] = 'welcome/empl_page';
+$route['employee'] = 'Frontend/EmployeeController/indek';
+$route['employee/add'] = 'Frontend/EmployeeController/create';
+$route['employee/store'] = 'Frontend/EmployeeController/store';
+$route['employee/edit/(:any)'] = 'Frontend/EmployeeController/edit/$1';
+$route['employee/update/(:any)'] = 'Frontend/EmployeeController/update/$1';
+$route['employee/delete/(:any)'] = 'Frontend/EmployeeController/delete/$1';
+
+$route['employee/confirmdelete/(:any)']['DELETE'] = 'Frontend/EmployeeController/delete/$1';
+
+
+$route['register']['GET'] = 'Auth/RegisterController/index';
+$route['register']['POST'] = 'Auth/RegisterController/register';
+
+$route['login']['GET'] = 'Auth/LoginController/index';
+$route['login']['POST'] = 'Auth/LoginController/login';
