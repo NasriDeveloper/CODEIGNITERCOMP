@@ -52,11 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['demo'] = 'welcome/demo_page';
+// $route['demo'] = 'welcome/demo_page';
 $route['dem'] = 'welcome/empl_page';
 $route['employee'] = 'Frontend/EmployeeController/indek';
+$route['rout'] = 'Frontend/RoutController/rout';
 $route['employee/add'] = 'Frontend/EmployeeController/create';
 $route['employee/store'] = 'Frontend/EmployeeController/store';
+$route['rout/store'] = 'Frontend/RoutController/storey';
 $route['employee/edit/(:any)'] = 'Frontend/EmployeeController/edit/$1';
 $route['employee/update/(:any)'] = 'Frontend/EmployeeController/update/$1';
 $route['employee/delete/(:any)'] = 'Frontend/EmployeeController/delete/$1';
@@ -64,8 +66,26 @@ $route['employee/delete/(:any)'] = 'Frontend/EmployeeController/delete/$1';
 $route['employee/confirmdelete/(:any)']['DELETE'] = 'Frontend/EmployeeController/delete/$1';
 
 
-$route['register']['GET'] = 'Auth/RegisterController/index';
-$route['register']['POST'] = 'Auth/RegisterController/register';
+$route['register']['GET'] = 'Auth/RegisterController/indep';
+$route['regidster']['POST'] = 'Auth/RegisterController/register';
 
 $route['login']['GET'] = 'Auth/LoginController/index';
 $route['login']['POST'] = 'Auth/LoginController/login';
+
+
+
+$route['userpage']['GET'] = 'PageController/userpage';
+$route['admin']['GET'] = 'PageController/admin';
+
+
+require_once(BASEPATH.'database/DB.php');
+    $db = & DB();
+    $routes = $db->get('routes')->result();
+    foreach($routes as $row){
+         $route[$row->slug] = $row->controller.'/'.$row->method; 
+    }
+
+
+
+
+

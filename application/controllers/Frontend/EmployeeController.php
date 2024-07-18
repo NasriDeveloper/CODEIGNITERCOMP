@@ -35,6 +35,9 @@ class EmployeeController extends CI_Controller {
         $this->load->view('template/footer');
 	}
 
+	   
+   
+
 	public function store()
 	{
 		$this->form_validation->set_rules('first_name', 'first_name', 'required');
